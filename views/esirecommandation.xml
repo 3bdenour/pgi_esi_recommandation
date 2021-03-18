@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+   <record model="ir.ui.view" id="demande_form_view">
+            <field name="name">demande.form</field>
+            <field name="model">esirecommandation.demande</field>
+            <field name="arch" type="xml">
+                <form string="Demande Form">
+                    <sheet>
+                        <group string="Informations">
+                            <field name="title"/>
+                            <field name="name_student"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="formation"/>
+                                                   
+                        </group>
+                        <notebook>
+                        <page string="Competances">
+                                <field name="competance_ids">
+                                    <tree string="Competances a valoriser">
+                                        <field name="name_competance"/>                                                                            
+                    </tree>
+                                </field>
+                            </page>
+                            <page string="Lettres de recommandation">
+                               <field name="lettre_ids">
+                                    <tree string="Lettres de recommandation">
+                                        <field name="name_teacher"/>
+                                        <field name="lettre_date"/>
+                                                                                            
+                                       </tree>
+                                </field>   
+                            </page>
+                            
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- override the automatically generated list view for courses -->
+        <record model="ir.ui.view" id="demande_tree_view">
+            <field name="name">demande.tree</field>
+            <field name="model">esirecommandation.demande</field>
+            <field name="arch" type="xml">
+                <tree string="Demande Tree">
+                    <field name="title"/>   
+                    <field name="name_student"/>              
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="demande_search_view">
+            <field name="name">demande.search</field>
+            <field name="model">esirecommandation.demande</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="title"/>   
+                    <field name="name_student"/> 
+                </search>
+            </field>
+        </record>
+
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="demande_list_action">
+            <field name="name">Demandes</field>
+            <field name="res_model">esirecommandation.demande</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Creer la premiere demande
+                </p>
+            </field>
+        </record>
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_esirecommandation_menu" name="ESI Recommandation"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="esirecommandation_menu" name="ESI Recommandation"
+                  parent="main_esirecommandation_menu"/>
+        <!-- the following menuitem should appear *after*
+             its parent openacademy_menu and *after* its
+             action course_list_action -->
+        <menuitem id="demandes_menu" name="Demande" parent="esirecommandation_menu"
+                  action="demande_list_action"/>
+        <!-- Full id location:
+             action="openacademy.course_list_action"
+             It is not required when it is the same module -->
+
+        <!-- session form view -->
+        <record model="ir.ui.view" id="lettre_form_view">
+            <field name="name">lettre.form</field>
+            <field name="model">esirecommandation.lettre</field>
+            <field name="arch" type="xml">
+                <form string="Recommandation Form">
+                    <sheet>
+                        
+                            <group string="General">
+                                <field name="demande_id"/>
+                                <field name="name_teacher"/>
+                                <field name="lettre_date"/>
+                            </group>
+                            <notebook>
+                            <page string="Recommandation">
+                               <field name="description"/>      
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- session tree/list view -->
+        <record model="ir.ui.view" id="lettre_tree_view">
+            <field name="name">lettre.tree</field>
+            <field name="model">esirecommandation.lettre</field>
+            <field name="arch" type="xml">
+                <tree string="Lettre Tree">
+                    <field name="name_teacher"/>
+                    <field name="demande_id"/>
+                    <field name="lettre_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="lettre_list_action">
+            <field name="name">Lettres</field>
+            <field name="res_model">esirecommandation.lettre</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="lettre_menu" name="Lettres"
+                  parent="esirecommandation_menu"
+                  action="lettre_list_action"/>
+
+
+        <record model="ir.ui.view" id="competance_form_view">
+            <field name="name">competance.form</field>
+            <field name="model">esirecommandation.competance</field>
+            <field name="arch" type="xml">
+                <form string="Competance Form">
+                    <sheet>
+                        
+                         <field name="name_competance"/>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>   
+
+         <record model="ir.ui.view" id="competance_tree_view">
+            <field name="name">competance.tree</field>
+            <field name="model">esirecommandation.competance</field>
+            <field name="arch" type="xml">
+                <tree string="Competance Tree">
+                    <field name="name_competance"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="competance_list_action">
+            <field name="name">Competances</field>
+            <field name="res_model">esirecommandation.competance</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="competance_menu" name="Competances"
+                  parent="esirecommandation_menu"
+                  action="competance_list_action"/>       
+
+</odoo>
+

@@ -1,0 +1,8 @@
+<odoo>
+        <record id="responsable_de" model="res.groups">
+            <field name="name">ESI Recommandation / Responsable DE</field>
+        </record>
+        <record id="enseignant" model="res.groups">
+            <field name="name">ESI Recommandation / Enseignant</field>
+        </record>
+</odoo>
