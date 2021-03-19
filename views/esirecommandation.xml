@@ -9,6 +9,7 @@
                     <sheet>
                         <group string="Informations">
                            <!-- <field name="is_created" invisible="1"/> attrs="{'invisible':[('is_created', '=', False)]}" -->
+                            
                             <field name="is_archived" />
                             <field name="title" attrs="{'readonly':[('is_archived', '=', True)]}"/>
                             <field name="name_student" attrs="{'readonly':[('is_archived', '=', True)]}"/>
@@ -16,7 +17,7 @@
                             <field name="end_date" attrs="{'readonly':[('is_archived', '=', True)]}"/>
                             <field name="formation" attrs="{'readonly':[('is_archived', '=', True)]}"/>
                             <field name="done" attrs="{'readonly':[('is_archived', '=', True)]}"/>
-
+                            <field name="len_lettres" readonly="1"/>
                                                    
                         </group>
                         <notebook>
@@ -32,7 +33,7 @@
                                     <tree string="Lettres de recommandation">
                                         <field name="name_teacher"/>
                                         <field name="lettre_date"/>
-                                                                                            
+
                                        </tree>
                                 </field>   
                             </page>
@@ -48,9 +49,11 @@
             <field name="name">demande.tree</field>
             <field name="model">esirecommandation.demande</field>
             <field name="arch" type="xml">
-                <tree string="Demande Tree">
+                <tree string="Demande Tree" decoration-danger="is_archived==True">
+                
                     <field name="title"/>   
-                    <field name="name_student"/>              
+                    <field name="name_student"/>   
+                     <field name="is_archived" />           
                 </tree>
             </field>
         </record>
@@ -62,6 +65,7 @@
                 <search>
                     <field name="title"/>   
                     <field name="name_student"/> 
+                   <filter string="Plus de 3 recommandations" name="" domain="[('len_lettres','>=',3)]" />
                 </search>
             </field>
         </record>

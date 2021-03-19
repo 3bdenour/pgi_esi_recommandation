@@ -1,0 +1,23 @@
+<odoo>
+
+    <record id="report_lettre" model="ir.actions.report">
+        <field name="name">Lettre de recommendation</field>
+        <field name="model">esirecommandation.lettre</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">esirecommandation.report_lettre_view</field>
+        <field name="report_file">esirecommandation.report_lettre</field>
+        <field name="binding_model_id" ref="model_esirecommandation_lettre"/>
+        <field name="binding_type">report</field>
+        
+    </record>
+
+    <template id="report_lettre_view">
+        <t t-call="web.html_container">
+		<h2>Lettre de recommendation</h2>   
+		<t t-esc="lettre.description"/>
+		<p>Enseignant</p> 
+		<t t-esc="lettre.name_teacher" />
+		</t>
+    </template>
+
+</odoo>

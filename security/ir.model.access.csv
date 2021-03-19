@@ -5,3 +5,6 @@ competance_manager,competance manager,model_esirecommandation_competance,respons
 demande_enseignant,demande consultant,model_esirecommandation_demande,enseignant,1,0,0,0
 lettre_enseignant,lettre manager,model_esirecommandation_lettre,enseignant,1,1,1,1
 competance_enseignant,competance consultant,model_esirecommandation_competance,enseignant,1,0,0,0
+demande_all,demande all,model_esirecommandation_demande,,1,0,0,0
+lettre_all,lettre all,model_esirecommandation_lettre,,1,0,0,0
+competance_all,lettre all,model_esirecommandation_competance,,1,0,0,0

@@ -28,6 +28,7 @@
         'security/ir.model.access.csv',
         'templates.xml',
         'views/esirecommandation.xml',
+        'reports.xml'
     ],
 
     # only loaded in demonstration mode

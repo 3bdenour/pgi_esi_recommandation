@@ -2,6 +2,9 @@
 
 from odoo import models, fields, api
 
+
+
+
 # class esirecommandation(models.Model):
 #     _name = 'esirecommandation.esirecommandation'
 
@@ -27,6 +30,15 @@ class Demande(models.Model):
     competance_ids = fields.Many2many('esirecommandation.competance',string="Competances a valoriser",required=True)
     lettre_ids = fields.One2many(
         'esirecommandation.lettre', 'demande_id', string="Lettres de recommandation")
+    
+    @api.depends('lettre_ids')
+    def _compute_len_lettres(self): 
+        if self.lettre_ids:
+            self.len_lettres = len(self.lettre_ids)
+        else:
+            self.len_lettres =  0
+    len_lettres = fields.Integer("Nombre de lettre recommandation",compute='_compute_len_lettres',store=True)
+
 
 class Lettre(models.Model):
     _name = 'esirecommandation.lettre'
