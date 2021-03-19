@@ -10,14 +10,21 @@ class Demande(models.Model):
     _name = 'esirecommandation.demande'
     _description = "Demande de lettre de recommandation"
 
-    title = fields.Char(string="Titre de la demande", required=True)
+    """  @api.model
+    def create(self, values):
+        self.is_created = True
+        return super(Demande, self).create(values) """
+
+    title = fields.Char(string="Titre de la demande", required=True )
     name_student = fields.Char(string="Nom Etudiant", required=True)
-    start_date = fields.Date()
+    start_date = fields.Date(required=True)
     end_date = fields.Date()
     is_archived =fields.Boolean(default =False)
-    formation = fields.Text()
-    competance_ids = fields.Many2many('esirecommandation.competance',string="Competances a valoriser")
-    #realisation 
+   # is_created = fields.Boolean(default =False)
+    formation = fields.Text(required=True)
+    is_done = fields.Boolean(default=False)
+    done = fields.Char(string="Note de realisation")
+    competance_ids = fields.Many2many('esirecommandation.competance',string="Competances a valoriser",required=True)
     lettre_ids = fields.One2many(
         'esirecommandation.lettre', 'demande_id', string="Lettres de recommandation")
 
@@ -27,8 +34,8 @@ class Lettre(models.Model):
 
 
     name_teacher = fields.Char(string="Nom Enseigant", required=True)
-    lettre_date = fields.Date()
-    description = fields.Text()
+    lettre_date = fields.Date(required=True)
+    description = fields.Text(required=True)
     demande_id = fields.Many2one('esirecommandation.demande',
         ondelete='cascade', string="Demande de recommandation", required=True)
 

@@ -8,23 +8,27 @@
                 <form string="Demande Form">
                     <sheet>
                         <group string="Informations">
-                            <field name="title"/>
-                            <field name="name_student"/>
-                            <field name="start_date"/>
-                            <field name="end_date"/>
-                            <field name="formation"/>
+                           <!-- <field name="is_created" invisible="1"/> attrs="{'invisible':[('is_created', '=', False)]}" -->
+                            <field name="is_archived" />
+                            <field name="title" attrs="{'readonly':[('is_archived', '=', True)]}"/>
+                            <field name="name_student" attrs="{'readonly':[('is_archived', '=', True)]}"/>
+                            <field name="start_date" attrs="{'readonly':[('is_archived', '=', True)]}"/>
+                            <field name="end_date" attrs="{'readonly':[('is_archived', '=', True)]}"/>
+                            <field name="formation" attrs="{'readonly':[('is_archived', '=', True)]}"/>
+                            <field name="done" attrs="{'readonly':[('is_archived', '=', True)]}"/>
+
                                                    
                         </group>
                         <notebook>
                         <page string="Competances">
-                                <field name="competance_ids">
+                                <field name="competance_ids" attrs="{'readonly':[('is_archived', '=', True)]}">
                                     <tree string="Competances a valoriser">
                                         <field name="name_competance"/>                                                                            
                     </tree>
                                 </field>
                             </page>
                             <page string="Lettres de recommandation">
-                               <field name="lettre_ids">
+                               <field name="lettre_ids" attrs="{'readonly':[('is_archived', '=', True)]}" >
                                     <tree string="Lettres de recommandation">
                                         <field name="name_teacher"/>
                                         <field name="lettre_date"/>

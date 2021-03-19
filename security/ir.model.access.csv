@@ -1,6 +1,7 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-demande_manager,course manager,model_esirecommandation_demande,responsable_de,1,1,1,1
-lettre_manager,session manager,model_esirecommandation_lettre,responsable_de,1,1,1,1
-competance_manager,session manager,model_esirecommandation_competance,responsable_de,1,1,1,1
-demande_enseignant,course manager,model_esirecommandation_demande,enseignant,1,0,0,0
-lettre_enseignant,session manager,model_esirecommandation_lettre,enseignant,1,1,1,1
+demande_manager,demande manager,model_esirecommandation_demande,responsable_de,1,1,1,1
+lettre_manager,lettre consultant,model_esirecommandation_lettre,responsable_de,1,1,1,1
+competance_manager,competance manager,model_esirecommandation_competance,responsable_de,1,1,1,1
+demande_enseignant,demande consultant,model_esirecommandation_demande,enseignant,1,0,0,0
+lettre_enseignant,lettre manager,model_esirecommandation_lettre,enseignant,1,1,1,1
+competance_enseignant,competance consultant,model_esirecommandation_competance,enseignant,1,0,0,0
